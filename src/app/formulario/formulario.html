@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <form class="row g-3">
+  <div class="col-md-7">
+    <label for="inputNombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="inputNombre" #inputNombre>
+  </div>
+
+  <div class="col-md-7">
+    <label for="inputImagen" class="form-label">Imagen</label>
+    <input type="file" class="form-control" id="inputImagen" #inputImagen>
+  </div>
+  
+  <div class="col-md-7">
+    <label for="inputIngredientes" class="form-label">Ingredientes (separados por comas)</label>
+    <input type="text" class="form-control" id="inputIngredientes" #inputIngredientes>
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary" (click)="agregarReceta(inputNombre.value, inputImagen.value, inputIngredientes.value)">Agregar Receta</button>
+  </div>
+</form>
+</div>
