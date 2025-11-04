@@ -1,11 +1,12 @@
-
 <app-navegador></app-navegador>
 <div class="container mt-4">
-<div class="row">
-  @for (receta of recetas; track $index){
-    <app-receta [titulo]="receta.titulo" [imagen]="receta.imagen" [ingredientes]="receta.ingredientes"></app-receta>
-  }
-</div>
+  <div class="row">
+    @for (receta of recetas; track $index){
+    <div class="col-12 col-md-6 col-lg-3 mb-4">
+      <app-receta [titulo]="receta.titulo" [imagen]="receta.imagen" [ingredientes]="receta.ingredientes"></app-receta>
+    </div>
+    }
+  </div>
 </div>
 
-<app-formulario></app-formulario>
+<app-formulario (recetaNueva) = "crearReceta($event)"></app-formulario>

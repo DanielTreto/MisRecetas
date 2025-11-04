@@ -1,22 +1,22 @@
 <div class="container mt-4">
-  <form class="row g-3">
+  <form class="row g-3" [formGroup]="recetaForm" (ngSubmit)="submit()">
   <div class="col-md-7">
-    <label for="inputNombre" class="form-label">Nombre</label>
-    <input type="text" class="form-control" id="inputNombre" #inputNombre>
+    <label for="titulo" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="titulo" formControlName="titulo" #inputNombre>
   </div>
 
   <div class="col-md-7">
-    <label for="inputImagen" class="form-label">Imagen</label>
-    <input type="file" class="form-control" id="inputImagen" #inputImagen>
+    <label for="imagen" class="form-label">Imagen</label>
+    <input type="text" class="form-control" id="imagen" formControlName="imagen" #inputImagen>
   </div>
   
   <div class="col-md-7">
-    <label for="inputIngredientes" class="form-label">Ingredientes (separados por comas)</label>
-    <input type="text" class="form-control" id="inputIngredientes" #inputIngredientes>
+    <label for="ingredientes" class="form-label">Ingredientes (separados por comas)</label>
+    <input type="text" class="form-control" id="ingredientes" formControlName="ingredientes" #inputIngredientes>
   </div>
 
   <div class="col-12">
     <button type="submit" class="btn btn-primary" >Agregar Receta</button>
   </div>
-</form>
+  </form>
 </div>
