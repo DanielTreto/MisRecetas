@@ -42,4 +42,8 @@ export class App {
   crearReceta(receta: recetaModel) {
     this.recetas.push(receta);
   }
+
+  eliminarReceta(receta: recetaModel){
+    this.recetas = this.recetas.filter(r => r.titulo !== receta.titulo)
+  }
 }
