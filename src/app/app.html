@@ -1,3 +1,11 @@
+
 <app-navegador></app-navegador>
-<app-receta></app-receta>
+<div class="container mt-4">
+<div class="row">
+  @for (receta of recetas; track $index){
+    <app-receta [titulo]="receta.titulo" [imagen]="receta.imagen" [ingredientes]="receta.ingredientes"></app-receta>
+  }
+</div>
+</div>
+
 <app-formulario></app-formulario>
