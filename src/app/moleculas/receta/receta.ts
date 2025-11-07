@@ -5,17 +5,17 @@ import { recetaModel } from '../../model/RecetaModel';
   selector: 'app-receta',
   imports: [],
   templateUrl: './receta.html',
-  styleUrl: './receta.scss'
+  styleUrl: './receta.scss',
 })
 export class Receta {
   titulo = input('Title');
   imagen = input('default.jpg');
-  ingredientes = input(['1','2','3']);
+  ingredientes = input(['1', '2', '3']);
 
   recetaEliminada = output<recetaModel>();
 
   eliminar() {
-    let receta = new recetaModel(this.titulo(),this.imagen(),this.ingredientes().join(', '));
+    let receta = new recetaModel(this.titulo(), this.imagen(), this.ingredientes().join(', '));
     this.recetaEliminada.emit(receta);
   }
 }

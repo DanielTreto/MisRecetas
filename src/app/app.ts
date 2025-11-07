@@ -3,17 +3,16 @@ import { Navegador } from './organismos/navegador/navegador';
 import { Receta } from './moleculas/receta/receta';
 import { Formulario } from './organismos/formulario/formulario';
 import { recetaModel } from './model/RecetaModel';
-import { Footer } from "./organismos/footer/footer";
-import { Hero } from "./organismos/hero/hero";
+import { Footer } from './organismos/footer/footer';
+import { Hero } from './organismos/hero/hero';
 
 @Component({
   selector: 'app-root',
   imports: [Navegador, Receta, Formulario, Footer, Hero],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
-
   recetas: recetaModel[] = [];
 
   ngOnInit() {
@@ -37,22 +36,21 @@ export class App {
         'Sushi',
         'https://www.kikkoman.es/fileadmin/_processed_/4/2/csm_sushi-kakkoii_2c56fe3133.webp',
         'Arroz, Pescado crudo, Alga nori, Soja'
-      )
+      ),
     ];
   }
 
   crearReceta(receta: recetaModel) {
-
     for (const recetaActual of this.recetas) {
-        if (recetaActual.titulo.trim().toLowerCase() === receta.titulo.trim().toLowerCase()) {
-            alert(`La receta "${receta.titulo.trim()}" ya existe.`);
-            return;
-        }
+      if (recetaActual.titulo.trim().toLowerCase() === receta.titulo.trim().toLowerCase()) {
+        alert(`La receta "${receta.titulo.trim()}" ya existe.`);
+        return;
+      }
     }
     this.recetas.push(receta);
   }
 
-  eliminarReceta(receta: recetaModel){
-    this.recetas = this.recetas.filter(r => r.titulo !== receta.titulo)
+  eliminarReceta(receta: recetaModel) {
+    this.recetas = this.recetas.filter((r) => r.titulo !== receta.titulo);
   }
 }

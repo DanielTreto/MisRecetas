@@ -1,39 +1,52 @@
-@import "bootstrap/dist/css/bootstrap.css";
-
+@use 'sass:color';
+@import 'bootstrap/dist/css/bootstrap.css';
 
 // COLORES BASE DE MARCA Y ACCIÓN
-$primary: #E67E22; // Botones
-
+$primary: #e67e22; // Botones
 
 // COLORES NEUTROS Y FONDOS
-$body-bg: #F8F9FA; // Fondo de la página
+$body-bg: #f8f9fa; // Fondo de la página
 $dark: #212529; // Nav
 
-// Tipografía 
+// Tipografía
 $font-family-headings: georgia;
 $font-family-base: sans-serif;
 
-.btn-primary { background-color: $primary; border-color: $primary; }
-.btn-primary:hover { background-color: darken($primary, 10%); border-color: darken($primary, 10%); }
-.btn-warning { background-color: $primary; border-color: $primary; color: white;}
-.btn-warning:hover { background-color: darken($primary, 10%); border-color: darken($primary, 10%); }
-.bg-dark { background-color: $dark; }
-
+.btn-primary {
+  background-color: $primary;
+  border-color: $primary;
+}
+.btn-primary:hover {
+  background-color: color.adjust($primary, $lightness: -10%);
+  border-color: color.adjust($primary, $lightness: -10%);
+}
+.btn-warning {
+  background-color: $primary;
+  border-color: $primary;
+  color: white;
+}
+.btn-warning:hover {
+  background-color: color.adjust($primary, $lightness: -10%);
+  border-color: color.adjust($primary, $lightness: -10%);
+}
+.bg-dark {
+  background-color: $dark;
+}
 
 html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 86px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 86px;
 }
 
 body {
-    background-color: $body-bg;
-    font-family: $font-family-base;
+  background-color: $body-bg;
+  font-family: $font-family-base;
 }
 
-#hero{
-    font-family: $font-family-headings;
+#hero {
+  font-family: $font-family-headings;
 }
 
-#hero-botones{
-    font-family: $font-family-base;
+#hero-botones {
+  font-family: $font-family-base;
 }

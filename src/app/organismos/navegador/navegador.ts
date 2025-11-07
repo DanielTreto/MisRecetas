@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-navegador',
   imports: [],
   templateUrl: './navegador.html',
-  styleUrl: './navegador.scss'
+  styleUrl: './navegador.scss',
 })
-export class Navegador {
-
-}
+export class Navegador {}

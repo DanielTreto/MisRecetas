@@ -4,7 +4,7 @@ import { Component, input } from '@angular/core';
   selector: 'app-boton',
   imports: [],
   templateUrl: './boton.html',
-  styleUrl: './boton.scss'
+  styleUrl: './boton.scss',
 })
 export class Boton {
   type = input('type');
