@@ -3,10 +3,12 @@ import { Navegador } from './navegador/navegador';
 import { Receta } from './receta/receta';
 import { Formulario } from './formulario/formulario';
 import { recetaModel } from './model/RecetaModel';
+import { Footer } from "./footer/footer";
+import { Hero } from "./hero/hero";
 
 @Component({
   selector: 'app-root',
-  imports: [Navegador, Receta, Formulario],
+  imports: [Navegador, Receta, Formulario, Footer, Hero],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
