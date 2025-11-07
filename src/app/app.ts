@@ -43,7 +43,7 @@ export class App {
   crearReceta(receta: recetaModel) {
     for (const recetaActual of this.recetas) {
       if (recetaActual.titulo.trim().toLowerCase() === receta.titulo.trim().toLowerCase()) {
-        alert(`La receta "${receta.titulo.trim()}" ya existe.`);
+        alert(`La receta "${recetaActual.titulo}" ya existe.`);
         return;
       }
     }
