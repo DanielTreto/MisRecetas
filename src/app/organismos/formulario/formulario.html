@@ -1,0 +1,23 @@
+<div class="container my-4">
+  <h2 class="mb-4">Añadir Receta</h2>
+  <form class="row g-3" [formGroup]="recetaForm" (ngSubmit)="submit()">
+    <div class="col-md-7">
+      <label for="titulo" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="titulo" formControlName="titulo" placeholder="Ej: Hamburguesa">
+    </div>
+
+    <div class="col-md-7">
+      <label for="imagen" class="form-label">Imagen</label>
+      <input type="text" class="form-control" id="imagen" formControlName="imagen" placeholder="Ej: https://">
+    </div>
+    
+    <div class="col-md-7">
+      <label for="ingredientes" class="form-label">Ingredientes (separados por comas)</label>
+      <input type="text" class="form-control" id="ingredientes" formControlName="ingredientes" placeholder="Ej: Carne,Queso,Lechuga,Pan">
+    </div>
+
+    <div class="col-12">
+      <app-boton [type]="'submit'" [class]="'btn btn-primary'" [texto]="'Agregar Receta'"></app-boton>
+    </div>
+  </form>
+</div>

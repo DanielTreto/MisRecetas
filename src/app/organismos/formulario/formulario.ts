@@ -1,11 +1,12 @@
 import { Component, output } from '@angular/core';
-import { Receta } from '../receta/receta';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { recetaModel } from '../model/RecetaModel';
+import { recetaModel } from '../../model/RecetaModel';
+import { Input } from "../../átomos/input/input";
+import { Boton } from "../../átomos/boton/boton";
 
 @Component({
   selector: 'app-formulario',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, Input, Boton],
   templateUrl: './formulario.html',
   styleUrl: './formulario.scss',
 })
@@ -29,6 +30,8 @@ export class Formulario {
   get ingredientes() {
     return this.recetaForm.get('ingredientes');
   }
+
+  id = 'ingredientes'
 
   submit() {
     if (this.recetaForm.valid) {

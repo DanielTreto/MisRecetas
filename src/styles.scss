@@ -1,7 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
-@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap/dist/css/bootstrap.css";
+
+
+// COLORES BASE DE MARCA Y ACCIÓN
+$primary: #E67E22; // Botones
+
+
+// COLORES NEUTROS Y FONDOS
+$body-bg: #F8F9FA; // Fondo de la página
+$dark: #212529; // Nav
+
+// Tipografía 
+$font-family-headings: georgia;
+$font-family-base: sans-serif;
+
+.btn-primary { background-color: $primary; border-color: $primary; }
+.btn-primary:hover { background-color: darken($primary, 10%); border-color: darken($primary, 10%); }
+.btn-warning { background-color: $primary; border-color: $primary; color: white;}
+.btn-warning:hover { background-color: darken($primary, 10%); border-color: darken($primary, 10%); }
+.bg-dark { background-color: $dark; }
 
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    scroll-padding-top: 86px;
+}
+
+body {
+    background-color: $body-bg;
+    font-family: $font-family-base;
+}
+
+#hero{
+    font-family: $font-family-headings;
+}
+
+#hero-botones{
+    font-family: $font-family-base;
 }

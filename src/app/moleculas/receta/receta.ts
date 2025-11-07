@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { recetaModel } from '../model/RecetaModel';
+import { recetaModel } from '../../model/RecetaModel';
 
 @Component({
   selector: 'app-receta',

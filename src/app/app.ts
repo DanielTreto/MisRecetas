@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { Navegador } from './navegador/navegador';
-import { Receta } from './receta/receta';
-import { Formulario } from './formulario/formulario';
+import { Navegador } from './organismos/navegador/navegador';
+import { Receta } from './moleculas/receta/receta';
+import { Formulario } from './organismos/formulario/formulario';
 import { recetaModel } from './model/RecetaModel';
-import { Footer } from "./footer/footer";
-import { Hero } from "./hero/hero";
+import { Footer } from "./organismos/footer/footer";
+import { Hero } from "./organismos/hero/hero";
 
 @Component({
   selector: 'app-root',
@@ -42,6 +42,13 @@ export class App {
   }
 
   crearReceta(receta: recetaModel) {
+
+    for (const recetaActual of this.recetas) {
+        if (recetaActual.titulo.trim().toLowerCase() === receta.titulo.trim().toLowerCase()) {
+            alert(`La receta "${receta.titulo.trim()}" ya existe.`);
+            return;
+        }
+    }
     this.recetas.push(receta);
   }
 

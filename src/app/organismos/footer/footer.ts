@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { Navegador } from "../navegador/navegador";
-import { Formulario } from "../formulario/formulario";
+import { ImagenesSocial } from "../../moleculas/imagenes-social/imagenes-social";
 
 
 @Component({
   selector: 'app-footer',
-  imports: [Formulario],
+  imports: [ImagenesSocial],
   templateUrl: './footer.html',
   styleUrl: './footer.scss'
 })
