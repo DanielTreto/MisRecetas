@@ -1,5 +1,5 @@
 import { Component, output } from '@angular/core';
-import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import { recetaModel } from '../../model/RecetaModel';
 import { Boton } from '../../átomos/boton/boton';
 
@@ -12,10 +12,17 @@ import { Boton } from '../../átomos/boton/boton';
 export class Formulario {
   recetaNueva = output<recetaModel>();
 
+  static noWhitespaceValidator(control: AbstractControl): ValidationErrors | null {
+    const isWhitespace = control.value.trim().length === 0;
+    const isValid = !isWhitespace;
+    // Si no es válido (solo tiene espacios), devuelve un objeto de error
+    return isValid ? null : { 'whitespace': true };
+  }
+
   recetaForm = new FormGroup({
-    titulo: new FormControl('', Validators.required),
-    imagen: new FormControl('', Validators.required),
-    ingredientes: new FormControl('', Validators.required),
+    titulo: new FormControl('', [Validators.required, Formulario.noWhitespaceValidator] ),
+    imagen: new FormControl('', [Validators.required, Validators.pattern(/^[http]/)]),
+    ingredientes: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z,]/)]),
   });
 
   get titulo() {
@@ -40,7 +47,8 @@ export class Formulario {
       this.recetaNueva.emit(receta);
       this.recetaForm.reset();
     } else {
-      alert('Formulario inválido. Revise los campos.');
+      console.log('Formulario inválido. Revise los campos.');
     }
   }
+
 }

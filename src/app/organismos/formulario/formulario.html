@@ -3,7 +3,25 @@
   <form class="row g-3" [formGroup]="recetaForm" (ngSubmit)="submit()">
     <div class="col-md-7">
       <label for="titulo" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="titulo" formControlName="titulo" placeholder="Ej: Hamburguesa">
+      <input type="text" class="form-control" id="titulo" formControlName="titulo"
+        placeholder="Ej: Hamburguesa" [class.is-invalid]="titulo?.invalid && (titulo?.dirty || titulo?.touched)">
+      @if (titulo?.invalid && (titulo?.dirty || titulo?.touched)){
+        <div class="invalid-feedback d-block ms-2"> 
+          
+          @if (titulo?.hasError('required')){
+            <div>El nombre de la receta es obligatorio.</div> 
+          }
+          
+          @if (titulo?.hasError('minlength')){
+            <div>El nombre debe tener al menos caracteres.</div> 
+          }
+
+          @if (titulo?.hasError('pattern')){
+            <div>El nombre contiene caracteres no válidos.</div>
+          }
+
+        </div>
+      }
     </div>
 
     <div class="col-md-7">

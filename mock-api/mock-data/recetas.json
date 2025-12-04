@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "title": "Paella",
+    "image": "https://www.goya.com/wp-content/uploads/2023/10/goya-shrimp-paella.jpg",
+    "rating_average": 5,
+    "rating_count": 120,
+    "ingredients": [
+      {
+        "name": "Arroz"
+      },
+      {
+        "name": "Mariscos"
+      },
+      {
+        "name": "Azafrán"
+      },
+      {
+        "name": "Verduras"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Pizza Margarita",
+    "image": "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_1280.jpg",
+    "rating_average": 4,
+    "rating_count": 95,
+    "ingredients": [
+      {
+        "name": "Masa"
+      },
+      {
+        "name": "Tomate"
+      },
+      {
+        "name": "Mozzarella"
+      },
+      {
+        "name": "Albahaca"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Hamburguesa Clásica",
+    "image": "https://cdn.pixabay.com/photo/2016/03/05/19/02/salad-1238247_1280.jpg",
+    "rating_average": 4,
+    "rating_count": 210,
+    "ingredients": [
+      {
+        "name": "Pan"
+      },
+      {
+        "name": "Carne"
+      },
+      {
+        "name": "Queso"
+      },
+      {
+        "name": "Lechuga"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Sushi Variado",
+    "image": "https://www.kikkoman.es/fileadmin/_processed_/4/2/csm_sushi-kakkoii_2c56fe3133.webp",
+    "rating_average": 5,
+    "rating_count": 155,
+    "ingredients": [
+      {
+        "name": "Arroz"
+      },
+      {
+        "name": "Pescado crudo"
+      },
+      {
+        "name": "Alga nori"
+      },
+      {
+        "name": "Soja"
+      }
+    ]
+  }
+]
