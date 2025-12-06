@@ -31,4 +31,8 @@ export class Receta {
   eliminar() {
     this.recetaEliminada.emit();
   }
+
+  abrirModalCalificacion() {
+    
+  }
 }
