@@ -1,9 +1,9 @@
 import { Component, input, output } from '@angular/core';
-import { recetaModel } from '../../model/RecetaModel';
+import { ModalCalificacion } from '../modal-calificacion/modal-calificacion';
 
 @Component({
   selector: 'app-receta',
-  imports: [],
+  imports: [ModalCalificacion],
   templateUrl: './receta.html',
   styleUrl: './receta.scss',
 })
@@ -11,19 +11,36 @@ export class Receta {
   titulo = input('Title');
   imagen = input('default.jpg');
   ingredientes = input(['1', '2', '3']);
-  mediaCalif = input(0);
-  numVotos = input(0);
+  mediaCalifInput = input(0);
+  numVotosInput = input(0);
   estrellas: string[] = [];
+  mostrarModal: boolean = false;
+  mediaCalif: number = 0;
+  numVotos: number = 0;
 
   ngOnInit() {
-    let numEstrellasVacias = 5 - this.mediaCalif();
+    this.mediaCalif = this.mediaCalifInput();
+    this.numVotos = this.numVotosInput();
+    this.calcularEstrellas(this.mediaCalif);
+  } 
 
-    for (let i = 0; i < this.mediaCalif(); i++) {
+  calcularEstrellas(media: number) {
+    this.estrellas = [];
+    const mediaRedondeada = Math.round(media);
+    let numEstrellasVacias = 5 - mediaRedondeada;
+
+    for (let i = 0; i < mediaRedondeada; i++) {
       this.estrellas.push('estrella.png');
     }
     for (let i = 0; i < numEstrellasVacias; i++) {
       this.estrellas.push('estrellaVacia.png');
     }
+  } 
+
+  nuevaCalificacion = output<number>();
+
+  actualizarVotacion(nuevaCalificacion: number) {
+    this.nuevaCalificacion.emit(nuevaCalificacion);
   }
 
   recetaEliminada = output();
@@ -33,6 +50,10 @@ export class Receta {
   }
 
   abrirModalCalificacion() {
-    
+    this.mostrarModal = true;
+  }
+
+  cerrarModal() {
+    this.mostrarModal = false;
   }
 }

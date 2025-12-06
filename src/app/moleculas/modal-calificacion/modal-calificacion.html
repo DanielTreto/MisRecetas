@@ -1,22 +1,24 @@
 <div class="modal-overlay" role="dialog" aria-modal="true">
   <div class="modal-box">
     <div class="modal-content bg-white rounded-3 shadow-lg p-4 p-md-5 position-relative">
-      <div class="modal-header">
-        <h5 class="modal-title">Calificar Receta</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+        style="position: absolute; top: 10px; right: 10px;" (click)="cerrar()"></button>
+
       <div class="modal-body text-center">
         <div class="d-flex justify-content-center mb-3 estrellas">
-          <img src="estrella.png" alt="Estrella" class="estrella">
-          <img src="estrella.png" alt="Estrella" class="estrella">
-          <img src="estrella.png" alt="Estrella" class="estrella">
-          <img src="estrella.png" alt="Estrella" class="estrella">
-          <img src="estrella.png" alt="Estrella" class="estrella">
+          @for (i of [1,2,3,4,5]; track i){
+            <img
+              (click)="calificar(i)"
+              [src]="calificacion >= i ? 'estrella.png' : 'estrellaVacia.png'"
+              [alt]="calificacion >= i ? 'Estrella llena' : 'Estrella vacía'"
+              class="estrella"
+              style="cursor: pointer;">
+          }
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Rate</button>
-      </div>
+
+      <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+        style="position: absolute; bottom: 10px; right: 10px;" (click)="enviarVoto()">Rate</button>
     </div>
   </div>
 </div>

@@ -4,8 +4,8 @@
         @if (recetasAsync$ | async; as recetas) {
         @for (receta of recetas; track receta.titulo){
         <div class="col-12 col-sm-6 col-lg-3 mb-4">
-            <app-receta [titulo]="receta.titulo" [imagen]="receta.imagen" [ingredientes]="receta.ingredientes" [mediaCalif]="receta.mediaCalif" [numVotos]="receta.numVotos"
-                (recetaEliminada)="eliminarReceta(receta.id)"></app-receta>
+            <app-receta [titulo]="receta.titulo" [imagen]="receta.imagen" [ingredientes]="receta.ingredientes" [mediaCalifInput]="receta.mediaCalif" [numVotosInput]="receta.numVotos"
+                (recetaEliminada)="eliminarReceta(receta.id)" (nuevaCalificacion)="anadirCalificacion(receta.id, $event, receta.mediaCalif, receta.numVotos)"></app-receta>
         </div>
         } @empty {
         <div class="col-12 text-center my-5">

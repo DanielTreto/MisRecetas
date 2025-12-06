@@ -45,4 +45,18 @@ router.delete('/:id', (req, res) => {
   }
 });
 
+
+router.patch('/:id', (req, res) => {
+  const id = Number(req.params.id);
+  const index = recetas.findIndex(r => r.id === id);
+  if (index >= 0) {
+    const recetaActualizada = { ...recetas[index], ...req.body };
+    recetas[index] = recetaActualizada;
+    console.log('Receta actualizada (solo en memoria):', recetaActualizada);
+    return res.json(recetaActualizada);
+  } else {
+    return res.status(404).json({ error: 'Receta no encontrada' });
+  }
+});
+
 module.exports = router;

@@ -33,4 +33,8 @@ export class SeccionRecetas {
   eliminarReceta(id: number) {
     this.recetaService.eliminarReceta(id);
   }
+
+  anadirCalificacion(id: number, nuevaCalificacion: number, media: number, votos: number) {
+    this.recetaService.añadirCalificacion(id, nuevaCalificacion,media,votos);
+  }
 }
