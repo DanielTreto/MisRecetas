@@ -16,23 +16,28 @@ export class RecetaService {
   }
 
   constructor(private http: HttpClient) {}
+  
   getRecetas(): Observable<recetaModel[]> {
     return this.http.get<recetaModel[]>('http://localhost:3000/recetas');
   }
 
-  recetas: recetaModel[] = [];
-
   anadirReceta(receta: recetaModel) {
-    this.recetas.push(receta);
+    this.http.post('http://localhost:3000/recetas', receta)
+      .subscribe(newReceta => {
+        alert('Receta Created:' + JSON.stringify(newReceta));
+        this.notifyUpdateRecetas(null);
+      });
   }
 
-  anadirMensaje(titulo: string, imagen: string, ingredientes: string) {
-    let receta = new recetaModel(titulo, imagen, ingredientes);
-    return this.http
-      .post('http://localhost:3000/recetas', receta)
+
+  eliminarReceta(id: number) {
+    this.http.delete('http://localhost:3000/recetas/' + id)
+      .subscribe(newReceta => {
+        alert('Receta Deleted:' + JSON.stringify(newReceta));
+        this.notifyUpdateRecetas(null);
+      });
   }
 
-  listarRecetas(): recetaModel[] {
-    return this.recetas;
-  }
+
+
 }

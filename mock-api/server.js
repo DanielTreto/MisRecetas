@@ -7,7 +7,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/recetas', require('./routes/recetas'));
-app.use('/order', require('./routes/orders'));
 
 app.get('/', (req, res) => {
   res.send('Mock API corriendo dentro del proyecto Angular 🚀');

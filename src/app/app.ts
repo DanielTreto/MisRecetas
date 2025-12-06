@@ -15,14 +15,4 @@ import { SeccionRecetas } from "./organismos/seccion-recetas/seccion-recetas";
 })
 export class App {
   
-  crearReceta(receta: recetaModel) {
-    for (const recetaActual of this.recetas) {
-      if (recetaActual.titulo.trim().toLowerCase() === receta.titulo.trim().toLowerCase()) {
-        alert(`La receta "${recetaActual.titulo}" ya existe.`);
-        return;
-      }
-    }
-    this.recetas.push(receta);
-  }
-  recetas: recetaModel[] = [];
 }

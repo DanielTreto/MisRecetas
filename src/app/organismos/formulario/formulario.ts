@@ -2,6 +2,7 @@ import { Component, output } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import { recetaModel } from '../../model/RecetaModel';
 import { Boton } from '../../átomos/boton/boton';
+import { RecetaService } from '../../services/receta-service';
 
 @Component({
   selector: 'app-formulario',
@@ -10,6 +11,7 @@ import { Boton } from '../../átomos/boton/boton';
   styleUrl: './formulario.scss',
 })
 export class Formulario {
+  constructor(private recetaService: RecetaService){};
   recetaNueva = output<recetaModel>();
 
   static noWhitespaceValidator(control: AbstractControl): ValidationErrors | null {
@@ -39,12 +41,14 @@ export class Formulario {
 
   submit() {
     if (this.recetaForm.valid) {
-      let receta = new recetaModel(
+      let receta = new recetaModel(0,
         this.recetaForm.value.titulo ?? '',
         this.recetaForm.value.imagen ?? '',
-        this.recetaForm.value.ingredientes ?? ''
+        this.recetaForm.value.ingredientes?.split(',') ?? [],
+        0,
+        0
       );
-      this.recetaNueva.emit(receta);
+      this.recetaService.anadirReceta(receta);
       this.recetaForm.reset();
     } else {
       console.log('Formulario inválido. Revise los campos.');

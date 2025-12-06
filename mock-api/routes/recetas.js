@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
   const newId = recetas.length > 0 ? Math.max(...recetas.map(r => r.id)) + 1 : 1;
   newReceta.id = newId;
 
-  if (!newReceta.title) {
+  if (!newReceta.titulo) {
     return res.status(400).json({'code': 22, 'description': 'El título de la receta es obligatorio'});
   }
 
@@ -32,5 +32,17 @@ router.post('/', (req, res) => {
   res.status(201).json(newReceta);
 });
 
+
+router.delete('/:id', (req, res) => {
+  const id = Number(req.params.id);
+  const index = recetas.findIndex(r => r.id === id);
+  if (index >= 0) {
+    const eliminado = recetas.splice(index, 1)[0];
+    console.log('Receta eliminada (solo en memoria):', eliminado);
+    return res.json(eliminado);
+  } else {
+    return res.status(404).json({ error: 'Receta no encontrada' });
+  }
+});
 
 module.exports = router;

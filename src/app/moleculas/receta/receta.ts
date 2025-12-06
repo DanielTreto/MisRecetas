@@ -11,11 +11,24 @@ export class Receta {
   titulo = input('Title');
   imagen = input('default.jpg');
   ingredientes = input(['1', '2', '3']);
+  mediaCalif = input(0);
+  numVotos = input(0);
+  estrellas: string[] = [];
 
-  recetaEliminada = output<recetaModel>();
+  ngOnInit() {
+    let numEstrellasVacias = 5 - this.mediaCalif();
+
+    for (let i = 0; i < this.mediaCalif(); i++) {
+      this.estrellas.push('estrella.png');
+    }
+    for (let i = 0; i < numEstrellasVacias; i++) {
+      this.estrellas.push('estrellaVacia.png');
+    }
+  }
+
+  recetaEliminada = output();
 
   eliminar() {
-    let receta = new recetaModel(this.titulo(), this.imagen(), this.ingredientes().join(', '));
-    this.recetaEliminada.emit(receta);
+    this.recetaEliminada.emit();
   }
 }

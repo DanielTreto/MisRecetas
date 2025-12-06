@@ -1,15 +1,17 @@
 <div id="seccion-recetas" class="container mt-2 pt-2">
     <h2 class="display-5 mb-4 text-center">Recetas</h2>
     <div class="row justify-content-center">
-      @for (receta of recetas; track receta.titulo){
-      <div class="col-12 col-sm-6 col-lg-3 mb-4">
-        <app-receta [titulo]="receta.titulo" [imagen]="receta.imagen" [ingredientes]="receta.ingredientes"
-          (recetaEliminada)="eliminarReceta($event)"></app-receta>
-      </div>
-      } @empty {
-      <div class="col-12 text-center my-5">
-        <p class="lead text-muted">Aún no hay recetas. ¡Sé el primero en añadir una!</p>
-      </div>
-      }
+        @if (recetasAsync$ | async; as recetas) {
+        @for (receta of recetas; track receta.titulo){
+        <div class="col-12 col-sm-6 col-lg-3 mb-4">
+            <app-receta [titulo]="receta.titulo" [imagen]="receta.imagen" [ingredientes]="receta.ingredientes" [mediaCalif]="receta.mediaCalif" [numVotos]="receta.numVotos"
+                (recetaEliminada)="eliminarReceta(receta.id)"></app-receta>
+        </div>
+        } @empty {
+        <div class="col-12 text-center my-5">
+            <p class="lead text-muted">Aún no hay recetas. ¡Sé el primero en añadir una!</p>
+        </div>
+        }
+        }
     </div>
-  </div>
+</div>
