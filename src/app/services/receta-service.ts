@@ -24,14 +24,12 @@ export class RecetaService {
 
   anadirReceta(receta: recetaModel) {
     this.http.post(URL_BASE + '/recetas', receta).subscribe((newReceta) => {
-      alert('Receta Created:' + JSON.stringify(newReceta));
       this.notifyUpdateRecetas(null);
     });
   }
 
   eliminarReceta(id: number) {
     this.http.delete(URL_BASE + '/recetas/' + id).subscribe((newReceta) => {
-      alert('Receta Deleted:' + JSON.stringify(newReceta));
       this.notifyUpdateRecetas(null);
     });
   }
@@ -47,13 +45,12 @@ export class RecetaService {
         numVotos: nuevosVotos,
       })
       .subscribe((newReceta) => {
-        alert('Receta Updated:' + JSON.stringify(newReceta));
         this.notifyUpdateRecetas(null);
       });
   }
 
   getRecetasPorCalificacion(calif: number): Observable<recetaModel[]> {
-        const url = `${URL_BASE}/recetas?exactCalif=${calif}`;
-        return this.http.get<recetaModel[]>(url);
+    const url = `${URL_BASE}/recetas?exactCalif=${calif}`;
+    return this.http.get<recetaModel[]>(url);
   }
 }
