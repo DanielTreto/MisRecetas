@@ -81,5 +81,6 @@ export class Formulario {
       imagen: '',
       ingredientes: '',
     });
+    alert('Receta añadida correctamente.');
   }
 }
