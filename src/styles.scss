@@ -50,3 +50,35 @@ body {
 #hero-botones {
   font-family: $font-family-base;
 }
+
+@media (max-width: 767.98px) and (orientation: landscape) {
+  .card {
+    min-height: 220px;
+  }
+
+  .votes-badge {
+    top: 44px !important;
+    right: 8px !important;
+    margin-right: 0 !important;
+    z-index: 12;
+  }
+
+  .rating-badge {
+    top: 8px;
+    right: 8px !important;
+    margin-right: 0 !important;
+    z-index: 11;
+    padding: 6px 8px;
+  }
+
+  .rating-badge img {
+    width: 12px;
+    height: 12px;
+    margin: 3px;
+  }
+
+  .votes-badge h6 {
+    font-size: 0.85rem;
+    margin-right: 4px;
+  }
+}

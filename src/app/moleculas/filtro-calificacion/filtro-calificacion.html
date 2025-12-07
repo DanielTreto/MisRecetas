@@ -1,0 +1,12 @@
+<div class="d-flex justify-content-center mb-4">
+    <div class="btn-group" role="group">
+        @for (i of [0, 1, 2, 3, 4, 5]; track i) {
+            <button type="button" class="btn btn-outline-warning"  (click)="seleccionarFiltro(i)">
+                {{ i }} ⭐
+            </button>
+        }
+        <button type="button" class="btn btn-secondary"  (click)="seleccionarFiltro(-1)">
+                Todas
+        </button>
+    </div>
+</div>

@@ -16,13 +16,13 @@ export class Receta {
   estrellas: string[] = [];
   mostrarModal: boolean = false;
   mediaCalif: number = 0;
-  numVotos: number = 0;
+  numVotos: number = 0;
 
   ngOnInit() {
     this.mediaCalif = this.mediaCalifInput();
     this.numVotos = this.numVotosInput();
     this.calcularEstrellas(this.mediaCalif);
-  } 
+  }
 
   calcularEstrellas(media: number) {
     this.estrellas = [];
@@ -35,7 +35,7 @@ export class Receta {
     for (let i = 0; i < numEstrellasVacias; i++) {
       this.estrellas.push('estrellaVacia.png');
     }
-  } 
+  }
 
   nuevaCalificacion = output<number>();
 

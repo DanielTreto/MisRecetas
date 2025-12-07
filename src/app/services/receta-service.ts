@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, ReplaySubject } from 'rxjs';
 import { recetaModel } from '../model/RecetaModel';
 
+const URL_BASE: String = 'http://localhost:3000';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -17,18 +19,18 @@ export class RecetaService {
   constructor(private http: HttpClient) {}
 
   getRecetas(): Observable<recetaModel[]> {
-    return this.http.get<recetaModel[]>('http://localhost:3000/recetas');
+    return this.http.get<recetaModel[]>(URL_BASE + '/recetas');
   }
 
   anadirReceta(receta: recetaModel) {
-    this.http.post('http://localhost:3000/recetas', receta).subscribe((newReceta) => {
+    this.http.post(URL_BASE + '/recetas', receta).subscribe((newReceta) => {
       alert('Receta Created:' + JSON.stringify(newReceta));
       this.notifyUpdateRecetas(null);
     });
   }
 
   eliminarReceta(id: number) {
-    this.http.delete('http://localhost:3000/recetas/' + id).subscribe((newReceta) => {
+    this.http.delete(URL_BASE + '/recetas/' + id).subscribe((newReceta) => {
       alert('Receta Deleted:' + JSON.stringify(newReceta));
       this.notifyUpdateRecetas(null);
     });
@@ -40,7 +42,7 @@ export class RecetaService {
     const nuevaMedia = (totalPuntosAnterior + nuevaCalificacion) / nuevosVotos;
 
     this.http
-      .patch('http://localhost:3000/recetas/' + id, {
+      .patch(URL_BASE + '/recetas/' + id, {
         mediaCalif: nuevaMedia,
         numVotos: nuevosVotos,
       })
@@ -48,5 +50,10 @@ export class RecetaService {
         alert('Receta Updated:' + JSON.stringify(newReceta));
         this.notifyUpdateRecetas(null);
       });
+  }
+
+  getRecetasPorCalificacion(calif: number): Observable<recetaModel[]> {
+        const url = `${URL_BASE}/recetas?exactCalif=${calif}`;
+        return this.http.get<recetaModel[]>(url);
   }
 }

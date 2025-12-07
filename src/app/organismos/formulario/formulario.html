@@ -1,4 +1,4 @@
-<div class="container my-4">
+<div id="formulario" class="container my-4">
   <h2 class="mb-4">Añadir Receta</h2>
   <form class="row g-3" [formGroup]="recetaForm" (ngSubmit)="submit()">
     <div class="col-md-7">
@@ -36,7 +36,7 @@
     </div>
 
     <div class="col-12">
-      <app-boton [type]="'submit'" [class]="'btn btn-primary'" [texto]="'Agregar Receta'"></app-boton>
+      <app-boton [type]="'submit'" [class]="'btn btn-warning'" [texto]="'Agregar Receta'"></app-boton>
     </div>
   </form>
 </div>

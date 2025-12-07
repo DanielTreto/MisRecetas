@@ -2,12 +2,12 @@
   <div class="position-absolute top-0 start-0 m-2 d-flex bg-white rounded p-1" style="cursor: pointer;width: 30px; height: 30px;" (click)="abrirModalCalificacion()">
     <img src="https://cdn-icons-png.flaticon.com/256/626/626004.png" alt="Flecha" class="m-auto" style="width: 15px; height: 15px; rotate: 180deg;">
   </div>
-  <div class="position-absolute top-0 end-0 my-2 ms-2 d-flex bg-white rounded-pill px-2 py-1 shadow-sm" style="margin-right: 4.5rem;">
+  <div class="position-absolute top-0 end-0 my-2 ms-5 d-flex bg-white rounded-pill px-2 py-1 shadow-sm rating-badge" style="margin-right: 4.5rem;">
     @for (estrella of estrellas; track $index) {
     <img [src]="estrella" alt="Estrella" style="width: 15px; height: 15px; margin: 5px;">
     }
   </div>
-  <div class="position-absolute top-0 end-0 m-2 d-flex bg-white rounded p-1 justify-content-center align-items-center" style="height: 30px;">
+  <div class="position-absolute top-0 end-0 m-2 d-flex bg-white rounded p-1 justify-content-center align-items-center votes-badge" style="height: 30px;">
     <h6 class=" mb-0 mx-1">{{ numVotosInput() }}</h6>
     <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Flecha" style="width: 15px; height: 15px;">
   </div>

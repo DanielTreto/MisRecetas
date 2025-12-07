@@ -3,7 +3,21 @@ const router = express.Router();
 const recetas = require('../mock-data/recetas.json');
 
 router.get('/', (req, res) => {
-  res.json(recetas);
+  let recetasFiltradas = [...recetas]; 
+
+    if (req.query.exactCalif) {
+        const targetCalif = Number(req.query.exactCalif);
+        const lowerBound = targetCalif - 0.5;
+        const upperBound = targetCalif + 0.5;
+
+        recetasFiltradas = recetas.filter(receta => {
+            if (targetCalif === 5) {
+                return receta.mediaCalif >= 4.5 && receta.mediaCalif <= 5;
+            }
+            return receta.mediaCalif >= lowerBound && receta.mediaCalif < upperBound;
+        });
+    }
+    return res.json(recetasFiltradas);
 });
 
 router.get('/:id', (req, res) => {

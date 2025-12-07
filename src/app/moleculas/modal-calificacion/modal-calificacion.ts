@@ -15,7 +15,7 @@ export class ModalCalificacion{
   
   get calificacion() {
     let value: number = 0;
-    this.calificacionSubject.subscribe((v) => (value = v)).unsubscribe();
+    this.calificacionSubject.subscribe((v) => (value = v));
     return value;
   }
 
