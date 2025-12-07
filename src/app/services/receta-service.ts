@@ -18,22 +18,26 @@ export class RecetaService {
 
   constructor(private http: HttpClient) {}
 
+  // Obtiene todas las recetas.
   getRecetas(): Observable<recetaModel[]> {
     return this.http.get<recetaModel[]>(URL_BASE + '/recetas');
   }
 
+  // Añade una nueva receta.
   anadirReceta(receta: recetaModel) {
     this.http.post(URL_BASE + '/recetas', receta).subscribe((newReceta) => {
       this.notifyUpdateRecetas(null);
     });
   }
 
+  // Elimina una receta por su ID.
   eliminarReceta(id: number) {
     this.http.delete(URL_BASE + '/recetas/' + id).subscribe((newReceta) => {
       this.notifyUpdateRecetas(null);
     });
   }
 
+  // Añade una calificación a una receta específica. 
   añadirCalificacion(id: number, nuevaCalificacion: number, media: number, votos: number): void {
     const totalPuntosAnterior = media * votos;
     const nuevosVotos = votos + 1;
@@ -49,8 +53,9 @@ export class RecetaService {
       });
   }
 
+  // Obtiene recetas filtradas por calificación.
   getRecetasPorCalificacion(calif: number): Observable<recetaModel[]> {
-    const url = `${URL_BASE}/recetas?exactCalif=${calif}`;
+    const url = `${URL_BASE}/recetas?calif=${calif}`;
     return this.http.get<recetaModel[]>(url);
   }
 }

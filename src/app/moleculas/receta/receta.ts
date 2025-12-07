@@ -16,14 +16,12 @@ export class Receta {
   numVotos = input(0);
   mostrarModal: boolean = false;
 
-
   nuevaCalificacion = output<number>();
+  recetaEliminada = output<void>();
 
   actualizarVotacion(nuevaCalificacion: number) {
     this.nuevaCalificacion.emit(nuevaCalificacion);
   }
-
-  recetaEliminada = output();
 
   eliminar() {
     this.recetaEliminada.emit();

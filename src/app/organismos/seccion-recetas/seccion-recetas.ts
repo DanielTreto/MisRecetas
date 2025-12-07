@@ -21,6 +21,8 @@ export class SeccionRecetas {
 
   private subscriptionUpdate: Subscription | null = null;
 
+  // Inicializa la suscripción para actualizar la lista de recetas cuando cambian. 
+  // También aplica el filtro si está seleccionado.
   ngOnInit() {
     this.recetasAsync$ = this.recetaService.getRecetas();
 
@@ -33,14 +35,17 @@ export class SeccionRecetas {
     });
   }
 
+  // Elimina una receta por su ID.
   eliminarReceta(id: number) {
     this.recetaService.eliminarReceta(id);
   }
 
+  // Añade una calificación a una receta específica.
   anadirCalificacion(id: number, nuevaCalificacion: number, media: number, votos: number) {
     this.recetaService.añadirCalificacion(id, nuevaCalificacion, media, votos);
   }
 
+  // Aplica un filtro basado en la calificación seleccionada.
   aplicarFiltro(calificacionSeleccionada: number) {
     this.filtro = calificacionSeleccionada;
 
