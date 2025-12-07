@@ -19,7 +19,6 @@ import { RecetaService } from '../../services/receta-service';
 })
 export class Formulario {
   constructor(private recetaService: RecetaService) {}
-  recetaNueva = output<recetaModel>();
 
   static noWhitespaceValidator(control: AbstractControl): ValidationErrors | null {
     const isWhitespace = control.value.trim().length === 0;
@@ -58,7 +57,7 @@ export class Formulario {
   // Maneja el envío del formulario para añadir una nueva receta.
   // Si no es válido, marca los campos como tocados y muestra un mensaje de error. 
   // Si es válido, crea una nueva receta y la añade al servicio.
-  
+
   submit() {
     if (this.recetaForm.invalid) {
       Object.keys(this.recetaForm.controls).forEach((key) => {

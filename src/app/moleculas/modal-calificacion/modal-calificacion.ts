@@ -14,8 +14,9 @@ export class ModalCalificacion {
   private calificacionSubject = new ReplaySubject<number>(1);
   // Observable público para suscribirse a los cambios de calificación.
   public calificacion$: Observable<number> = this.calificacionSubject.asObservable();
-  
+
   votoEmitido = output<number>();
+  close = output();
 
   // Getter que retorna la calificación actual del Subject.
   get calificacion() {
@@ -29,13 +30,14 @@ export class ModalCalificacion {
     this.calificacionSubject.next(0);
   }
 
-  close = output();
-
+  // Emite el voto y cierra el modal.
   enviarVoto() {
     this.votoEmitido.emit(this.calificacion);
     this.close.emit();
   }
 
+
+  // Cierra el modal sin emitir ningún voto.
   cerrar() {
     this.close.emit();
   }
