@@ -1,6 +1,5 @@
 # MisRecetas
 
-Descripción breve
 MisRecetas es una aplicación ligera para crear, organizar y compartir recetas de cocina. Está pensada como un proyecto personal y plantilla educativa que puedes adaptar a tus necesidades: almacenar recetas con ingredientes, pasos e imágenes, clasificarlas por categorías y etiquetas, y exportarlas o mostrarlas en una interfaz web.
 
 # Requisitos
