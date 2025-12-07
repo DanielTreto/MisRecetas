@@ -10,4 +10,5 @@ export class Boton {
   type = input('type');
   class = input('class');
   texto = input('texto');
+  disabled = input(false);
 }

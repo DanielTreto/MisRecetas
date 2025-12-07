@@ -1,10 +1,17 @@
 <div id="formulario" class="container my-4">
   <h2 class="mb-4">Añadir Receta</h2>
   <form class="row g-3" [formGroup]="recetaForm" (ngSubmit)="submit()">
+    
     <div class="col-md-7">
       <label for="titulo" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="titulo" formControlName="titulo"
-        placeholder="Ej: Hamburguesa" [class.is-invalid]="titulo?.invalid && (titulo?.dirty || titulo?.touched)">
+      <input 
+        type="text" 
+        class="form-control" 
+        id="titulo" 
+        formControlName="titulo"
+        placeholder="Ej: Hamburguesa" 
+        [class.is-invalid]="titulo?.invalid && (titulo?.dirty || titulo?.touched)"
+      >
       @if (titulo?.invalid && (titulo?.dirty || titulo?.touched)){
         <div class="invalid-feedback d-block ms-2"> 
           
@@ -12,8 +19,12 @@
             <div>El nombre de la receta es obligatorio.</div> 
           }
           
+          @if (titulo?.hasError('whitespace')){
+            <div>El nombre no puede consistir solo en espacios.</div> 
+          }
+          
           @if (titulo?.hasError('minlength')){
-            <div>El nombre debe tener al menos caracteres.</div> 
+            <div>El nombre debe tener al menos {{ titulo?.errors?.['minlength'].requiredLength }} caracteres.</div> 
           }
 
           @if (titulo?.hasError('pattern')){
@@ -25,18 +36,62 @@
     </div>
 
     <div class="col-md-7">
-      <label for="imagen" class="form-label">Imagen</label>
-      <input type="text" class="form-control" id="imagen" formControlName="imagen" placeholder="Ej: https://">
+      <label for="imagen" class="form-label">Imagen (URL)</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="imagen" 
+        formControlName="imagen" 
+        placeholder="Ej: https://..."
+        [class.is-invalid]="imagen?.invalid && (imagen?.dirty || imagen?.touched)"
+      >
+      @if (imagen?.invalid && (imagen?.dirty || imagen?.touched)){
+        <div class="invalid-feedback d-block ms-2"> 
+          @if (imagen?.hasError('required')){
+            <div>La URL de la imagen es obligatoria.</div> 
+          }
+          @if (imagen?.hasError('pattern')){
+            <div>Debe ser una URL válida que empiece por http/https</div>
+          }
+        </div>
+      }
     </div>
 
     <div class="col-md-7">
       <label for="ingredientes" class="form-label">Ingredientes (separados por comas)</label>
-      <input type="text" class="form-control" id="ingredientes" formControlName="ingredientes"
-        placeholder="Ej: Carne,Queso,Lechuga,Pan">
+      <input 
+        type="text" 
+        class="form-control" 
+        id="ingredientes" 
+        formControlName="ingredientes"
+        placeholder="Ej: Carne,Queso,Lechuga,Pan"
+        [class.is-invalid]="ingredientes?.invalid && (ingredientes?.dirty || ingredientes?.touched)"
+      >
+      @if (ingredientes?.invalid && (ingredientes?.dirty || ingredientes?.touched)){
+        <div class="invalid-feedback d-block ms-2"> 
+          @if (ingredientes?.hasError('required')){
+            <div>La lista de ingredientes es obligatoria.</div> 
+          }
+          @if (ingredientes?.hasError('minlength')){
+            <div>Ingrese al menos 5 caracteres (ej. 'carne, queso').</div> 
+          }
+          @if (ingredientes?.hasError('pattern')){
+            <div>Solo se permiten letras, espacios y comas.</div>
+          }
+          @if (ingredientes?.hasError('whitespace')){
+            <div>La lista de ingredientes no puede consistir solo en espacios.</div> 
+          }
+        </div>
+      }
     </div>
 
     <div class="col-12">
-      <app-boton [type]="'submit'" [class]="'btn btn-warning'" [texto]="'Agregar Receta'"></app-boton>
+      <app-boton 
+        [type]="'submit'" 
+        [class]="'btn btn-warning'" 
+        [texto]="'Agregar Receta'"
+        [disabled]="recetaForm.invalid && (recetaForm.dirty || recetaForm.touched)"
+      ></app-boton>
     </div>
   </form>
 </div>
