@@ -6,14 +6,9 @@
 
       <div class="modal-body text-center">
         <div class="d-flex justify-content-center mb-3 estrellas">
-          @for (i of [1,2,3,4,5]; track i){
-            <img
-              (click)="calificar(i)"
-              [src]="calificacion >= i ? 'estrella.png' : 'estrellaVacia.png'"
-              [alt]="calificacion >= i ? 'Estrella llena' : 'Estrella vacía'"
-              class="estrella"
-              style="cursor: pointer;">
-          }
+          <app-estrellas [calificacion]="calificacion" [interactivo]="true"
+            (estrellaSeleccionada)="manejarSeleccion($event)">
+          </app-estrellas>
         </div>
       </div>
 

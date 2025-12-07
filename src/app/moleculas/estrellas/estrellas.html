@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center">
+  @for (i of estrellasArray; track i) {
+    <img
+      (click)="handleClick(i)"
+      [src]="getSrc(i)"
+      [alt]="i <= calificacion() ? 'Estrella llena' : 'Estrella vacía'"
+      class="estrella"
+      [style.cursor]="interactivo() ? 'pointer' : 'default'"
+      [style.width.px]="interactivo() ? 40 : 15"
+      [style.height.px]="interactivo() ? 40 : 15"
+      style="margin: 5px;">
+  }
+</div>
