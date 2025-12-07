@@ -3,7 +3,8 @@ const router = express.Router();
 const recetas = require('../mock-data/recetas.json');
 
 
-//Obtiene todas las recetas y permite filtrado por calificación.
+//Obtiene todas las recetas y permite filtrado por calificación. 
+// Se redondean las calificaciones para el filtro.
 router.get('/', (req, res) => {
   let recetasFiltradas = [...recetas];
 
