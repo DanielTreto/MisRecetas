@@ -19,7 +19,7 @@ export class Estrellas {
     }
   }
 
-  // Lógica para determinar si la estrella está llena o vacía (usa Math.ceil para el display estático)
+  // Lógica para determinar si la estrella está llena o vacía
   getSrc(i: number): string {
     const calif = this.calificacion();
 
